@@ -24,6 +24,7 @@ Bundler version 1.10.6
 
 ### History
 
+- 2015-01-05 Added `ruby-irb` and `ruby-io-console` packages.
 - 2015-12-23 Upgraded to Alpine Linux 3.3 / Ruby 2.2.4p230.
 - 2015-12-11 Initial version.
 
