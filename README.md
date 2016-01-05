@@ -17,14 +17,13 @@ This image installs [Bundler][bundler] and Ruby development headers.
 
 ```ash
 $ docker run --rm sickp/alpine-ruby ruby -v && bundler -v
-
 ruby 2.2.4p230 (2015-12-16 revision 53155) [x86_64-linux-musl]
-Bundler version 1.10.6
+Bundler version 1.11.2
 ```
 
 ### History
 
-- 2015-01-05 Added `ruby-irb` and `ruby-io-console` packages.
+- 2015-01-05 Added `ruby-irb` and `ruby-io-console` packages, updated to Bundler 1.11.2.
 - 2015-12-23 Upgraded to Alpine Linux 3.3 / Ruby 2.2.4p230.
 - 2015-12-11 Initial version.
 
