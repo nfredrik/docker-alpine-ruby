@@ -1,6 +1,6 @@
 ### Alpine Linux Ruby
 
-A lightweight [Ruby][ruby] [Docker image][alpine_ruby] built on top of [Alpine Linux][gliderlabs_alpine].
+A lightweight [Ruby][ruby] [Docker image][dockerhub_project] built atop [Alpine Linux][gliderlabs_alpine]. Available on [GitHub][github_project].
 
 Tags ending with the suffix `-k8s` are build on [Alpine-Kubernetes][alpine_kubernetes], an image for Kubernetes and other Docker cluster environments that use DNS-based service discovery. It adds the necessary `search` domain support for DNS resolution.
 
@@ -17,8 +17,10 @@ Tags ending with the suffix `-k8s` are build on [Alpine-Kubernetes][alpine_kuber
 
 This image installs [Bundler][bundler] and Ruby development headers.
 
+```bash
+$ docker run --rm -it sickp/alpine-ruby # irb
+irb(main):001:0>
 
-```ash
 $ docker run --rm sickp/alpine-ruby ruby -v
 ruby 2.2.4p230 (2015-12-16 revision 53155) [x86_64-linux-musl]
 
@@ -34,11 +36,12 @@ Bundler version 1.11.2
 - 2015-12-11 - Initial version.
 
 [alpine_kubernetes]:    https://hub.docker.com/r/janeczku/alpine-kubernetes/
-[alpine_ruby]:          https://hub.docker.com/r/sickp/alpine-ruby/
 [bundler]:              http://bundler.io
+[dockerhub_project]:    https://hub.docker.com/r/sickp/alpine-ruby/
 [dockerfile_2_2_2]:     https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.2.2/Dockerfile
 [dockerfile_2_2_3]:     https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.2.3/Dockerfile
 [dockerfile_2_2_4]:     https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.2.4/Dockerfile
 [dockerfile_2_2_4_k8s]: https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.2.4-k8s/Dockerfile
+[github_project]:       https://github.com/sickp/docker-alpine-ruby/
 [gliderlabs_alpine]:    https://hub.docker.com/r/gliderlabs/alpine/
 [ruby]:                 https://www.ruby-lang.org/
