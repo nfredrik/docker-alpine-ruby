@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
-repo="sickp/alpine-ruby"
-latest=$(ls -r versions | head -1)
-tags="${latest} 2.2 2 latest"
+repo=sickp/alpine-ruby
+latest=2.2.4
+tags="${latest} ${latest}-k8s 2.2 2 latest"
 for tag in ${tags}; do
   docker push ${repo}:${tag}
   echo "=> Pushed ${repo}:${tag}"
