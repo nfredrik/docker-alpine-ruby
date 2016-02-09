@@ -26,10 +26,17 @@ ruby 2.2.4p230 (2015-12-16 revision 53155) [x86_64-linux-musl]
 
 $ docker run --rm sickp/alpine-ruby bundler -v
 Bundler version 1.11.2
+
+$ docker run --rm sickp/alpine-ruby openssl version
+OpenSSL 1.0.2f  28 Jan 2016 (Library: OpenSSL 1.0.2e 3 Dec 2015)
+
+$ docker run --rm sickp/alpine-ruby cat /etc/alpine-release
+3.3.1
 ```
 
 ### History
 
+- 2016-02-09 - Added support for ALPINE_NO_RESOLVER in Kubernetes version.
 - 2016-01-27 - Added Kubernetes versions (-k8s), until Alpine Linux/musl adds DNS search support.
 - 2015-01-05 - Added `ruby-irb` and `ruby-io-console` packages, updated to Bundler 1.11.2.
 - 2015-12-23 - Upgraded to Alpine Linux 3.3 / Ruby 2.2.4p230.
