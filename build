@@ -11,7 +11,7 @@ echo "=> Built ${repo}:${version}"
 if [[ $latest == $version ]]; then
   tags="2.2 2 latest"
   for tag in ${tags}; do
-    docker tag -f ${repo}:${version} ${repo}:${tag}
+    docker tag ${repo}:${version} ${repo}:${tag}
     echo "=> Tagged ${repo}:${tag}"
   done
 fi
