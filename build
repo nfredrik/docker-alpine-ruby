@@ -1,17 +1,24 @@
-#!/bin/bash
-set -e
-repo=sickp/alpine-ruby
-latest=2.2.4
-version=${1:-$latest}
+#!/usr/bin/env ruby
+repo="sickp/alpine-ruby"
 
-docker build -t ${repo}:${version} --pull versions/${version}
-docker build -t ${repo}:${version}-k8s --pull versions/${version}-k8s
+ruby_version = ARGV.first
+case ruby_version
+when /\A2.3.\d+\z/
+  tags = %w(2.3 2 latest)
+when /\A2.2.\d+\z/
+  tags = %w(2.2)
+when /\A2.1.\d+\z/
+  tags = %w(2.1)
+else
+  puts "Usage: build <ruby-version>"
+  puts "  <ruby-version> = 2.3.x | 2.2.x | 2.1.x"
+  exit 1
+end
 
-echo "=> Built ${repo}:${version}"
-if [[ $latest == $version ]]; then
-  tags="2.2 2 latest"
-  for tag in ${tags}; do
-    docker tag ${repo}:${version} ${repo}:${tag}
-    echo "=> Tagged ${repo}:${tag}"
-  done
-fi
+system("docker build -t #{repo}:#{ruby_version} --pull versions/#{ruby_version}") || abort
+puts "Built #{repo}:#{ruby_version}"
+
+tags.each do |tag|
+  system("docker tag #{repo}:#{ruby_version} #{repo}:#{tag}") || abort
+  puts "Tagged #{repo}:#{tag}"
+end
