@@ -11,6 +11,7 @@ when /\A2.1.\d+\z/
   tags = %w(2.1)
 else
   puts "Usage: build <ruby-version>"
+  puts "  <ruby-version> = 2.3.x | 2.2.x | 2.1.x"
   exit 1
 end
 
