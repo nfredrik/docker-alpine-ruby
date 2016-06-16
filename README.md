@@ -49,8 +49,7 @@ $ docker run --rm sickp/alpine-ruby:2.3.1 cat /etc/alpine-release
 [alpine_kubernetes]: https://hub.docker.com/r/janeczku/alpine-kubernetes/
 [bundler]:           http://bundler.io
 [dockerhub_project]: https://hub.docker.com/r/sickp/alpine-ruby/
-[dockerfile]:        https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.2.4/Dockerfile
-[dockerfile_k8s]:    https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.2.4-k8s/Dockerfile
+[dockerfile]:        https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.3.1/Dockerfile
 [github_project]:    https://github.com/sickp/docker-alpine-ruby/
 [gliderlabs_alpine]: https://hub.docker.com/r/gliderlabs/alpine/
 [ruby]:              https://www.ruby-lang.org/
