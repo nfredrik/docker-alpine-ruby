@@ -1,6 +1,6 @@
 ### Alpine Linux Ruby
 
-A lightweight [Ruby][ruby] [Docker image][dockerhub_project] built atop [Alpine Linux][alpine_linux]. Available on [GitHub][github_project].
+A lightweight [Ruby][ruby] [Docker image][dockerhub_project] built from source atop [Alpine Linux][alpine_linux]. Available on [GitHub][github_project].
 
 > If you're running Kubernetes 1.2.0 or later on all your cluster nodes, you should now use the non-`k8s` tags below. These tags are built on Alpine Linux 3.4, which adds the necessary DNS search support for service discovery. Kubernetes defaults to `dnsPolicy=ClusterFirst` in pod specs, and defines a single `nameserver` in `/etc/resolv.conf`. This means things should finally work correctly for Alpine Linux images without modification.
 
@@ -26,6 +26,7 @@ irb(main):001:0>
 
 ### About
 
+```bash
 $ docker run --rm sickp/alpine-ruby:2.3.1 ruby -v
 ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-linux]
 
