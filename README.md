@@ -2,7 +2,7 @@
 
 A lightweight [Ruby][ruby] [Docker image][dockerhub_project] built from source atop [Alpine Linux][alpine]. Available on [GitHub][github_project].
 
-These images are heavily based on the [official Ruby Alpine image](official_ruby) (`2.4.0-alpine`), except for a modified tag format formed from the Ruby version `{major}.{minor}.{teeny}` plus an image revision `-r{revision}`. The image revision changes whenever the underlying [Bundler gem](bundler), [RubyGems](rubygems), or [Alpine Linux](alpine) release changes. This is the familiar scheme that Linux package managers use, and allows you to lock to an immutable Alpine + Ruby + RubyGems + Bundler combination.
+These images are heavily based on the [official Ruby Alpine image][official_ruby] (`2.4.0-alpine`), except for a modified tag format formed from the Ruby version `{major}.{minor}.{teeny}` plus an image revision `-r{revision}`. The image revision changes whenever the underlying [Bundler gem][bundler], [RubyGems][rubygems], or [Alpine Linux][alpine] release changes. This is the familiar scheme that Linux package managers use, and allows you to lock to an immutable Alpine + Ruby + RubyGems + Bundler combination.
 
     $ docker run --interactive --tty --rm sickp/alpine-ruby:2.4.0-r1  # default command is `irb`
     irb(main):001:0> Time.now.yday  # day of the year (at the Royal Observatory in Greenwich, London)
