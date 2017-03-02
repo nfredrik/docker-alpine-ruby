@@ -3,21 +3,16 @@ repo="sickp/alpine-ruby"
 
 ruby_version = ARGV.first
 case ruby_version
-when /\A2.3.\d+\z/
-  tags = %w(2.3 2 latest)
-when /\A2.2.\d+\z/
-  tags = %w(2.2)
-when /\A2.1.\d+\z/
-  tags = %w(2.1)
+when /\A2.4.0-r\d+\z/
+  tags = %w(2.4.0 2.4 2 latest)
 else
-  puts "Usage: build <ruby-version>"
-  puts "  <ruby-version> = 2.3.x | 2.2.x | 2.1.x"
+  puts "Usage: push {major}.{minor}.{teeny}-r{revision}"
   exit 1
 end
 
 tags.unshift(ruby_version)
 
 tags.each do |tag|
-  system("docker push #{repo}:#{tag}") || abort
+  system("docker image push #{repo}:#{tag}") || abort
   puts "Pushed #{repo}:#{tag}"
 end
