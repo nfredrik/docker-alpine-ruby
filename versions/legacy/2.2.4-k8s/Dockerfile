@@ -1,9 +1,0 @@
-FROM janeczku/alpine-kubernetes:3.3
-MAINTAINER Adrian B. Danieli "https://github.com/sickp"
-
-RUN \
-  apk --update add ca-certificates ruby ruby-dev ruby-io-console ruby-irb && \
-  gem install bundler --no-document && \
-  rm -rf /var/cache/apk/*
-
-CMD ["irb"]

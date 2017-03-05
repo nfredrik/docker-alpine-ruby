@@ -21,15 +21,6 @@ These images are heavily based on the [official Ruby Alpine image][official_ruby
     * Bundler 1.14.5
     * Alpine Linux 3.4.6
 
-> These legacy tags remain available but do not follow the tag format described above:
->
-> - `2.3.1`, `2.3` (Ruby 2.3.1p112, 2016-04-26)
-> - `2.2.4-k8s` (Ruby 2.2.4p230, 2015-12-16)
-> - `2.2.4`, `2.2` (Ruby 2.2.4p230, 2015-12-16)
-> - `2.2.3` (Ruby 2.2.3p173, 2015-08-18)
-> - `2.2.2` (Ruby 2.2.2p95, 2015-04-13)
-
-
 ### History
 
 - 2017-03-01 - Introduced new tag format. Ruby 2.4.0p0, RubyGems 2.6.10, Bundler 1.14.5, Alpine Linux 3.4.6.
