@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
 repo="sickp/alpine-ruby"
 
-ruby_version = ARGV.first
-case ruby_version
-when /\A2.4.0-r\d+\z/
-  tags = %w(2.4.0 2.4 2 latest)
+ruby_version = ARGV.first || ''
+md = ruby_version.match(/\A(((\d+)\.\d+)\.\d+)-r\d+\z/)
+case md && md[3]
+when '2'
+  tags = [ md[1], md[2], md[3], 'latest' ]
 else
   puts "Usage: build {major}.{minor}.{teeny}-r{revision}"
   exit 1
