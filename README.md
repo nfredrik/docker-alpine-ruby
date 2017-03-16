@@ -4,7 +4,7 @@ A lightweight [Ruby][ruby] [Docker image][dockerhub_project] built from source a
 
 These images are heavily based on the [official Ruby Alpine image][official_ruby] (`2.4.0-alpine`), except for a modified tag format formed from the Ruby version `{major}.{minor}.{teeny}` plus an image revision `-r{revision}`. The image revision changes whenever the underlying [Bundler gem][bundler], [RubyGems][rubygems], or [Alpine Linux][alpine] release changes. This is the familiar scheme that Linux package managers use, and allows you to lock to an immutable Alpine + Ruby + RubyGems + Bundler combination.
 
-    $ docker run --interactive --tty --rm sickp/alpine-ruby:2.4.0-r1  # default command is `irb`
+    $ docker run --interactive --tty --rm sickp/alpine-ruby:2.4.0-r2  # default command is `irb`
     irb(main):001:0> Time.now.yday  # day of the year (at the Royal Observatory in Greenwich, London)
 
 > _NOTE (2017-03-01): Holding at Alpine Linux 3.4.x since 3.5.x replaced OpenSSL with LibreSSL... ostensibly a good decision... but this is currently breaking Puma, a popular Ruby web server._
@@ -13,7 +13,7 @@ These images are heavily based on the [official Ruby Alpine image][official_ruby
 
 #### `sickp/alpine-ruby:2.4.0-r2` (2017-03-16)
 
-[`2.4.0-r2`, `2.4.0`, `2.4`, `2`, `latest` (_Dockerfile_)](https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.4.0-r1/Dockerfile)
+[`2.4.0-r2`, `2.4.0`, `2.4`, `2`, `latest` (_Dockerfile_)](https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.4.0-r2/Dockerfile)
 
     $ docker run --rm sickp/alpine-ruby:2.4.0-r2 about
     * Ruby 2.4.0p0 (2016-12-24 revision 57164) [x86_64-linux]
