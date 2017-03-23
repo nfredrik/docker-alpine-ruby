@@ -11,10 +11,5 @@ else
   exit 1
 end
 
-system("docker image build -t #{repo}:#{ruby_version} --pull versions/#{ruby_version}") || abort
+system("docker image build --tag #{repo}:#{ruby_version} --pull versions/#{ruby_version}") || abort
 puts "Built #{repo}:#{ruby_version}"
-
-tags.each do |tag|
-  system("docker image tag #{repo}:#{ruby_version} #{repo}:#{tag}") || abort
-  puts "Tagged #{repo}:#{tag}"
-end

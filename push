@@ -1,19 +1,22 @@
 #!/usr/bin/env ruby
 repo="sickp/alpine-ruby"
-
-ruby_version = ARGV.first || ''
+ruby_version = ARGV.first || ""
 md = ruby_version.match(/\A(((\d+)\.\d+)\.\d+)-r\d+\z/)
 case md && md[3]
-when '2'
-  tags = [ md[1], md[2], md[3], 'latest' ]
+when "2"
+  tags = [ md[1], md[2], md[3] ]
 else
-  puts "Usage: push {major}.{minor}.{teeny}-r{revision}"
+  puts "Usage: push {major}.{minor}.{teeny}-r{revision} [latest]"
   exit 1
 end
+tags << "latest" if ARGV.last == "latest"
 
-tags.unshift(ruby_version)
+puts "==== Pushing #{repo}:#{ruby_version} ===="
+system("docker image push #{repo}:#{ruby_version}") || abort
 
 tags.each do |tag|
+  puts "==== Pushing #{repo}:#{tag} ===="
+  system("docker image tag #{repo}:#{ruby_version} #{repo}:#{tag}") || abort
   system("docker image push #{repo}:#{tag}") || abort
-  puts "Pushed #{repo}:#{tag}"
+  system("docker image rm #{repo}:#{tag}") || abort
 end

@@ -2,18 +2,28 @@
 
 A lightweight [Ruby][ruby] [Docker image][dockerhub_project] built from source atop [Alpine Linux][alpine]. Available on [GitHub][github_project].
 
-These images are heavily based on the [official Ruby Alpine image][official_ruby] (`2.4.0-alpine`), except for a modified tag format formed from the Ruby version `{major}.{minor}.{teeny}` plus an image revision `-r{revision}`. The image revision changes whenever the underlying [Bundler gem][bundler], [RubyGems][rubygems], or [Alpine Linux][alpine] release changes. This is the familiar scheme that Linux package managers use, and allows you to lock to an immutable Alpine + Ruby + RubyGems + Bundler combination.
+These images are heavily based on the [official Ruby Alpine image][official_ruby] (`2.x.x-alpine`), except for a modified tag format formed from the Ruby version `{major}.{minor}.{teeny}` plus an image revision `-r{revision}`. The image revision changes whenever the underlying [Bundler gem][bundler], [RubyGems][rubygems], or [Alpine Linux][alpine] release changes. This is the familiar scheme that Linux package managers use, and allows you to lock to an immutable Alpine + Ruby + RubyGems + Bundler combination.
 
-    $ docker run --interactive --tty --rm sickp/alpine-ruby:2.4.0-r2  # default command is `irb`
+    $ docker run --interactive --tty --rm sickp/alpine-ruby:2.4.1-r1  # default command is `irb`
     irb(main):001:0> Time.now.yday  # day of the year (at the Royal Observatory in Greenwich, London)
 
 > _NOTE (2017-03-01): Holding at Alpine Linux 3.4.x since 3.5.x replaced OpenSSL with LibreSSL... ostensibly a good decision... but this is currently breaking Puma, a popular Ruby web server._
 
 ### Tags
 
+#### `sickp/alpine-ruby:2.4.1-r1` (2017-03-23)
+
+[`2.4.1-r1`, `2.4.1`, `2.4`, `2`, `latest` (_Dockerfile_)](https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.4.1-r1/Dockerfile)
+
+    $ docker run --rm sickp/alpine-ruby:2.4.1-r1 about
+    * Ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+    * RubyGems 2.6.11
+    * Bundler 1.14.6
+    * Alpine Linux 3.4.6
+
 #### `sickp/alpine-ruby:2.4.0-r2` (2017-03-16)
 
-[`2.4.0-r2`, `2.4.0`, `2.4`, `2`, `latest` (_Dockerfile_)](https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.4.0-r2/Dockerfile)
+[`2.4.0-r2`, `2.4.0` (_Dockerfile_)](https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.4.0-r2/Dockerfile)
 
     $ docker run --rm sickp/alpine-ruby:2.4.0-r2 about
     * Ruby 2.4.0p0 (2016-12-24 revision 57164) [x86_64-linux]
@@ -33,6 +43,7 @@ These images are heavily based on the [official Ruby Alpine image][official_ruby
 
 ### History
 
+- 2017-03-23 - Added 2.4.1-r1. Ruby 2.4.1p111, RubyGems 2.6.11.
 - 2017-03-16 - Added 2.4.0-r2. Bundler 1.14.6.
 - 2017-03-01 - Introduced new tag format. Ruby 2.4.0p0, RubyGems 2.6.10, Bundler 1.14.5, Alpine Linux 3.4.6.
 - 2016-06-16 - Added Ruby 2.3.1, Bundler 1.12.5, Alpine Linux 3.4.0.
