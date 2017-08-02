@@ -11,7 +11,17 @@ These images are heavily based on the [official Ruby Alpine image][official_ruby
 
 ### Tags
 
-##### `2.4.1-r2`, `2.4.1`, `2.4`, `2`, `latest`
+##### `2.4.1-r3`, `2.4.1`, `2.4`, `2`, `latest`
+
+[Dockerfile](https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.4.1-r3/Dockerfile) / 2017-08-02
+
+    $ docker run --rm sickp/alpine-ruby:2.4.1-r3 about
+    * Ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+    * RubyGems 2.6.12
+    * Bundler 1.15.3
+    * Alpine Linux 3.6.2
+
+##### `2.4.1-r2`
 
 [Dockerfile](https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.4.1-r2/Dockerfile) / 2017-06-12
 
@@ -53,6 +63,7 @@ These images are heavily based on the [official Ruby Alpine image][official_ruby
 
 ### History
 
+    2017-08-02 Added 2.4.1-r3: Ruby 2.4.1p111, RubyGems 2.6.12, Bundler 1.15.3, Alpine Linux 3.6.2.
     2017-06-12 Added 2.4.1-r2: Ruby 2.4.1p111, RubyGems 2.6.12, Bundler 1.15.1, Alpine Linux 3.6.0.
     2017-03-23 Added 2.4.1-r1. Ruby 2.4.1p111, RubyGems 2.6.11.
     2017-03-16 Added 2.4.0-r2. Bundler 1.14.6.
