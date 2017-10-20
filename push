@@ -1,22 +1,43 @@
 #!/usr/bin/env ruby
-repo="sickp/alpine-ruby"
-ruby_version = ARGV.first || ""
-md = ruby_version.match(/\A(((\d+)\.\d+)\.\d+)-r\d+\z/)
-case md && md[3]
-when "2"
-  tags = [ md[1], md[2], md[3] ]
-else
-  puts "Usage: push {major}.{minor}.{teeny}-r{revision} [latest]"
+repo='sickp/alpine-ruby'
+release_tags = {
+  '2.5' => %w[preview],
+  '2.4' => %w[2 latest]
+}
+
+def error(message)
+  puts message
+  puts "Usage: #{__FILE__} {major}.{minor}.{patch}-r{revision} [tag]... ]"
   exit 1
 end
-tags << "latest" if ARGV.last == "latest"
 
-puts "==== Pushing #{repo}:#{ruby_version} ===="
-system("docker image push #{repo}:#{ruby_version}") || abort
+def execute(cmd)
+  puts "=> #{cmd}"
+  system(cmd) || abort
+end
+
+version, *tags = ARGV
+md = version&.match(/\A((\d+\.\d+)\.\d+)-r\d+\z/)
+error("Unknown version: #{version}") unless md
+
+dockerfile = File.join(File.dirname(__FILE__), 'versions', version, 'Dockerfile')
+error("Missing Dockerfile #{dockerfile}") unless File.file?(dockerfile)
+
+possible_tags = [ md[1], md[2] ] + release_tags.fetch(md[2], [])
+puts "Possible tags: #{possible_tags.join(', ')}"
+
+error('Must provide at least one tag.') if tags.empty?
+puts "Given tags: #{tags.join(', ')}"
+
+bad_tags = tags - possible_tags
+error("Illegal tag(s): #{bad_tags.join(', ')}") unless bad_tags.empty?
+
+puts "==== Pushing #{repo}:#{version} ===="
+execute("docker image push #{repo}:#{version}")
 
 tags.each do |tag|
-  puts "==== Pushing #{repo}:#{tag} ===="
-  system("docker image tag #{repo}:#{ruby_version} #{repo}:#{tag}") || abort
-  system("docker image push #{repo}:#{tag}") || abort
-  system("docker image rm #{repo}:#{tag}") || abort
+  puts "==== Tagging #{repo}:#{tag} ===="
+  execute("docker image tag #{repo}:#{version} #{repo}:#{tag}")
+  execute("docker image push #{repo}:#{tag}")
+  execute("docker image rm #{repo}:#{tag}")
 end

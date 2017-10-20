@@ -1,15 +1,21 @@
 #!/usr/bin/env ruby
-repo="sickp/alpine-ruby"
+repo='sickp/alpine-ruby'
 
-ruby_version = ARGV.first || ''
-md = ruby_version.match(/\A(((\d+)\.\d+)\.\d+)-r\d+\z/)
-case md && md[3]
-when '2'
-  tags = [ md[1], md[2], md[3], 'latest' ]
-else
-  puts "Usage: build {major}.{minor}.{teeny}-r{revision}"
+def error(message)
+  puts message
+  puts "Usage: #{__FILE__} {major}.{minor}.{patch}-r{revision}"
   exit 1
 end
 
-system("docker image build --tag #{repo}:#{ruby_version} --pull versions/#{ruby_version}") || abort
-puts "Built #{repo}:#{ruby_version}"
+def execute(cmd)
+  puts "=> #{cmd}"
+  system(cmd) || abort
+end
+
+version = ARGV.first
+error("Bad version format: #{version}") unless version&.match?(/\A\d+\.\d+\.\d+-r\d+\z/)
+
+dockerfile = File.join(File.dirname(__FILE__), 'versions', version, 'Dockerfile')
+error("Missing Dockerfile #{dockerfile}") unless File.file?(dockerfile)
+
+execute("docker image build --tag #{repo}:#{version} --pull versions/#{version}")
