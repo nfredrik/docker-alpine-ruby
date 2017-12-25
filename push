@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 repo='sickp/alpine-ruby'
 release_tags = {
-  '2.5' => %w[preview],
-  '2.4' => %w[2 latest]
+  '2.5' => %w[2 latest],
+  '2.4' => %w[]
 }
 
 def error(message)
