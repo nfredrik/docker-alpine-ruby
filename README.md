@@ -4,10 +4,20 @@ A lightweight [Ruby][ruby] [Docker image][dockerhub_project] built from source a
 
 These images are heavily based on the [official Ruby Alpine image][official_ruby] (`2.x.x-alpine`), except for a modified tag format formed from the Ruby version `{major}.{minor}.{teeny}` plus an image revision `-r{revision}`. The image revision changes whenever the underlying [Bundler gem][bundler], [RubyGems][rubygems], or [Alpine Linux][alpine] release changes. This is the familiar scheme that Linux package managers use, and allows you to lock to an immutable Alpine + Ruby + RubyGems + Bundler combination.
 
-    $ docker run --interactive --tty --rm sickp/alpine-ruby:2.4.2-r2  # default command is `irb`
+    $ docker run --interactive --tty --rm sickp/alpine-ruby:2.5.0-r2  # default command is `irb`
     irb(main):001:0> Time.now.yday  # day of the year (at the Royal Observatory in Greenwich, London)
 
 ### Tags
+
+##### `2.5.0-r2`, `2.5.0`, `2.5`, `2`, `latest`
+
+[Dockerfile](https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.5.0-r2/Dockerfile) / 2017-12-25
+
+    $ docker run --rm sickp/alpine-ruby:2.5.0-r2 about
+    * Ruby 2.5.0p0 (2017-12-25 revision 61468) [x86_64-linux]
+    * RubyGems 2.7.4
+    * Bundler 1.16.1
+    * Alpine Linux 3.7.0
 
 ##### `2.5.0-r1`, `2.5.0`, `2.5`, `preview`
 
@@ -19,7 +29,17 @@ These images are heavily based on the [official Ruby Alpine image][official_ruby
     * Bundler 1.15.4
     * Alpine Linux 3.6.2
 
-##### `2.4.2-r2`, `2.4.2`, `2.4`, `2`, `latest`
+##### `2.4.3-r1`, `2.4.3`, `2.4`
+
+[Dockerfile](https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.4.3-r1/Dockerfile) / 2017-12-14
+
+    $ docker run --rm sickp/alpine-ruby:2.4.3-r1 about
+    * Ruby 2.4.3p205 (2017-12-14 revision 61247) [x86_64-linux]
+    * RubyGems 2.7.4
+    * Bundler 1.16.1
+    * Alpine Linux 3.7.0
+
+##### `2.4.2-r2`, `2.4.2`
 
 [Dockerfile](https://github.com/sickp/docker-alpine-ruby/tree/master/versions/2.4.2-r2/Dockerfile) / 2017-12-11
 
@@ -91,6 +111,7 @@ These images are heavily based on the [official Ruby Alpine image][official_ruby
 
 ### History
 
+    2017-12-25 Added 2.5.0-r2: Ruby 2.5.0 & 2.4.3, RubyGems 2.7.4, Bundler 1.16.1, Alpine Linux 3.7.0.
     2017-12-11 Added 2.4.2-r2: Ruby 2.4.2p198, RubyGems 2.7.3, Bundler 1.16.0, Alpine Linux 3.7.0.
     2017-10-20 Added 2.5.0-r1: Ruby 2.5.0 preview1.
     2017-10-12 Added 2.4.2-r1: Ruby 2.4.2p198, RubyGems 2.6.14, Bundler 1.15.4, Alpine Linux 3.6.2.
