@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 repo='sickp/alpine-ruby'
 release_tags = {
+  '2.6' => %w[preview],
   '2.5' => %w[2 latest],
   '2.4' => %w[]
 }
